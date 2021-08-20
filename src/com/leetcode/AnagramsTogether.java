@@ -3,7 +3,10 @@ package com.leetcode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class AnagramsTogether {
 
@@ -11,6 +14,24 @@ public class AnagramsTogether {
 		AnagramsTogether anagramsTogether = new  AnagramsTogether();
 		String[] str = {"act","god","cat","dog","tac"};
 		anagramsTogether.printAnagramsTogether(str);
+		anagramsTogether.listOfAnagrams(str);
+	}
+
+	private void listOfAnagrams(String[] str) {
+		Map<String,List<String>> map = new HashMap<>();
+		List<String> ls = new ArrayList<>();
+         for(String s : str) {
+        	 Optional<String> op = Arrays.stream(s.split("")).sorted().reduce(String::concat);
+        	 String ss = op.get();
+        	 if(map.containsKey(ss)) {
+        		 map.get(ss).add(s);
+        	 }else {
+        		 ls= new ArrayList<String>();
+        		 ls.add(s);
+        		 map.put(ss, ls);
+        	 }    	 
+         }
+         System.out.println(map.values());
 	}
 
 	class Word{

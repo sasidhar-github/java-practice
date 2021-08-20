@@ -6,7 +6,7 @@ public class DeletingDuplicateArrayItems {
 
     public int removeElement(int[] nums, int val) {
         int[] newNum = nums;
-        nums = IntStream.range(0, newNum.length).filter(i->newNum[i] != val).map(i->newNum[i]).toArray();
+        nums = IntStream.range(0, newNum.length).map(i->newNum[i]).filter(i->newNum[i] != val).toArray();
         return nums.length;
     }
 	public static void main(String[] args) {

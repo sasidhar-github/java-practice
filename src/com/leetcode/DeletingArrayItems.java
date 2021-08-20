@@ -22,7 +22,16 @@ public class DeletingArrayItems {
 	public static void main(String[] args) {
 		DeletingArrayItems array= new DeletingArrayItems();
 		int[] a= {1,1,2};
-		array.removeDupElement(a);
+		array.removeDupElements(a);
 		System.out.println(Arrays.toString(a));
 	}
+	
+	public int removeDupElements(int[] nums) {
+	       // Arrays.sort(newNum);
+	        //nums = IntStream.range(0, newNum.length).map(i->newNum[i]).distinct().toArray();
+	        
+	        Set<Integer> set = new HashSet<>();
+	        set = IntStream.of(nums).boxed().collect(Collectors.toSet());
+	        return set.size();
+	    }
 }
